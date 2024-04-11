@@ -1,0 +1,72 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        h4 {
+            font-size: 18px;
+            margin-top: 0;
+            color: #f44336;
+            /* Vermelho */
+        }
+
+        p {
+            margin-top: 0;
+        }
+
+        a {
+            color: #007bff;
+            /* Azul */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+    <title>Teste Keycloak</title>
+</head>
+
+<body>
+    {% if session %}
+    <h1>Bem vindo, {{session.userinfo.preferred_username}}!</h1>
+    {% if not session.userinfo.email_verified %}
+    <h4>Seu email não foi verificado ainda.</h4>
+    {% endif %}
+    <p>Para sair, clique <a href="/logout">aqui</a>.</p>
+    <div>
+        <pre>{{pretty}}</pre>
+    </div>
+    {% else %}
+    <p>Para continuar, faça <a href="/login">Login</a>.</p>
+    {% endif %}
+</body>
+
+</html>
