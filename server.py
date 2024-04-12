@@ -77,6 +77,7 @@ def login():
 @app.route("/callback")
 def callback():
     token = oauth.myApp.authorize_access_token()
+    print(token)
     session["user"] = token
     return redirect(url_for("home"))
 

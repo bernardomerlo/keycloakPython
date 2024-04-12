@@ -56,16 +56,16 @@
 
 <body>
     {% if session %}
-    <h1>Bem vindo, {{session.userinfo.given_name}} {{session.userinfo.family_name}}!</h1>
-    <p>Essa é a área que voce vê suas informações</p>
-    {% if not session.userinfo.email_verified %}
+    <h1>Bem vindo, {{ session["user"]["userinfo"]["given_name"] }} {{session["user"]["userinfo"]["family_name"]}}!</h1>
+    <p>Esta é a área que voce vê seu Token JWT, para testa-lo, basta copiar, ir para <a href="https://jwt.io" target="_blank">jwt.io</a> e colar na área de encoded</p>
+    {% if not session["user"]["userinfo"].get("email_verified") %}
     <h4>Seu email não foi verificado ainda.</h4>
     {% endif %}
     <div>
-        <pre>{{pretty}}</pre>
+        <pre>{{ pretty }}</pre>
     </div>
-    <p>Para ver seu ID, clique <a href="http://localhost:5000">aqui</a>.</p>
-    <p>Para sair, clique <a href="/logout">aqui</a>.</p>
+    <p>Para ver suas informações, clique <a href="http://localhost:3000">aqui</a>.</p>
+    <p>Para fazer logout, clique <a href="/logout">aqui</a>.</p>
     {% else %}
     <p>Para continuar, faça <a href="/login">Login</a>.</p>
     {% endif %}
